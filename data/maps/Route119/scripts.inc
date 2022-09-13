@@ -235,9 +235,6 @@ Route119_Movement_RivalEnter1:
 	walk_fast_right
 	walk_fast_right
 	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_up
 	step_end
 
 Route119_Movement_RivalEnter2:
@@ -247,10 +244,6 @@ Route119_Movement_RivalEnter2:
 	walk_fast_right
 	walk_fast_right
 	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_up
 	step_end
 
 Route119_Movement_RivalExit1:

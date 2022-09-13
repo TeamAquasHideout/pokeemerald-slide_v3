@@ -16,6 +16,7 @@
 #include "task.h"
 #include "trig.h"
 #include "gpu_regs.h"
+#include "field_camera.h"
 
 #define DROUGHT_COLOR_INDEX(color) ((((color) >> 1) & 0xF) | (((color) >> 2) & 0xF0) | (((color) >> 3) & 0xF00))
 
@@ -72,7 +73,7 @@ static const u8 *sPaletteGammaTypes;
 
 // The drought weather effect uses a precalculated color lookup table. Presumably this
 // is because the underlying color shift calculation is slow.
-const u16 sDroughtWeatherColors[][0x1000] = {
+static const u16 sDroughtWeatherColors[][0x1000] = {
     INCBIN_U16("graphics/weather/drought/colors_0.bin"),
     INCBIN_U16("graphics/weather/drought/colors_1.bin"),
     INCBIN_U16("graphics/weather/drought/colors_2.bin"),
@@ -158,7 +159,7 @@ const u16 gFogPalette[] = INCBIN_U16("graphics/weather/fog.gbapal");
 
 void StartWeather(void)
 {
-    if (!FuncIsActiveTask(Task_WeatherMain))
+    if (TRUE)
     {
         u8 index = AllocSpritePalette(TAG_WEATHER_START);
         CpuCopy32(gFogPalette, &gPlttBufferUnfaded[0x100 + index * 16], 32);
@@ -224,6 +225,7 @@ static void Task_WeatherInit(u8 taskId)
     // When the screen fades in, this is set to TRUE.
     if (gWeatherPtr->readyForInit)
     {
+        UpdateCameraPanning();
         sWeatherFuncs[gWeatherPtr->currWeather].initAll();
         gTasks[taskId].func = Task_WeatherMain;
     }
@@ -373,11 +375,9 @@ static void FadeInScreenWithWeather(void)
     case WEATHER_RAIN:
     case WEATHER_RAIN_THUNDERSTORM:
     case WEATHER_DOWNPOUR:
-    case WEATHER_SNOW:
     case WEATHER_SHADE:
         if (FadeInScreen_RainShowShade() == FALSE)
         {
-            gWeatherPtr->gammaIndex = 3;
             gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_IDLE;
         }
         break;
@@ -399,6 +399,7 @@ static void FadeInScreenWithWeather(void)
     case WEATHER_SANDSTORM:
     case WEATHER_FOG_DIAGONAL:
     case WEATHER_UNDERWATER:
+    case WEATHER_SNOW:
     default:
         if (!gPaletteFade.active)
         {
@@ -765,7 +766,6 @@ void FadeScreen(u8 mode, s8 delay)
     case WEATHER_RAIN:
     case WEATHER_RAIN_THUNDERSTORM:
     case WEATHER_DOWNPOUR:
-    case WEATHER_SNOW:
     case WEATHER_FOG_HORIZONTAL:
     case WEATHER_SHADE:
     case WEATHER_DROUGHT:
@@ -863,10 +863,10 @@ void LoadCustomWeatherSpritePalette(const u16 *palette)
     UpdateSpritePaletteWithWeather(gWeatherPtr->weatherPicSpritePalIndex);
 }
 
-static void LoadDroughtWeatherPalette(u8 *gammaIndexPtr, u8 *a1)
+static void LoadDroughtWeatherPalette(u8 *palsIndex, u8 *palsOffset)
 {
-    *gammaIndexPtr = 0x20;
-    *a1 = 0x20;
+    *palsIndex = 0x20;
+    *palsOffset = 0x20;
 }
 
 void ResetDroughtWeatherPaletteLoading(void)

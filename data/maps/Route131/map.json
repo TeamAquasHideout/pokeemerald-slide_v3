@@ -5,7 +5,7 @@
   "music": "MUS_ROUTE119",
   "region_map_section": "MAPSEC_ROUTE_131",
   "requires_flash": false,
-  "weather": "WEATHER_SUNNY",
+  "weather": "WEATHER_SNOW",
   "map_type": "MAP_TYPE_OCEAN_ROUTE",
   "allow_cycling": true,
   "allow_escaping": false,
@@ -139,6 +139,10 @@
       "dest_warp_id": 0
     }
   ],
-  "coord_events": [],
-  "bg_events": []
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
 }

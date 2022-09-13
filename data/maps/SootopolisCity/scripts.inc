@@ -46,7 +46,6 @@ SootopolisCity_EventScript_LockHouseDoors::
 	return
 
 SootopolisCity_EventScript_LockGymDoor::
-	setmetatile 31, 32, METATILE_Sootopolis_GymDoor_Closed, TRUE
 	return
 
 SootopolisCity_OnTransition:

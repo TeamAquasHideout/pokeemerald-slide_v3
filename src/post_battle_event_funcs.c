@@ -90,3 +90,9 @@ bool8 SetCB2WhiteOut(void)
     SetMainCallback2(CB2_WhiteOut);
     return FALSE;
 }
+
+bool8 SetCB2WhiteOut2(void)
+{
+    SetMainCallback2(CB2_WhiteOut2);
+    return FALSE;
+}

@@ -14,6 +14,19 @@ EverGrandeCity_EventScript_CitySign::
 	msgbox EverGrandeCity_Text_CitySign, MSGBOX_SIGN
 	end
 
+EverGrandeCity_EventScript_CitySign2::
+	lock
+	pokemart EverGrandeMart
+	release
+	end
+
+	.align 2
+EverGrandeMart::
+	.2byte ITEM_RARE_CANDY
+	.2byte ITEM_NONE
+	release
+	end
+
 EverGrandeCity_EventScript_PokemonLeagueSign::
 	msgbox EverGrandeCity_Text_EnteringPokemonLeague, MSGBOX_SIGN
 	end

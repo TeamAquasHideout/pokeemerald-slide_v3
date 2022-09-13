@@ -19,19 +19,12 @@ SSTidalRooms_EventScript_ExplainSnatch::
 	end
 
 SSTidalRooms_EventScript_Bed::
-	specialvar VAR_RESULT, IsPokecenterChallengeActivated
-	goto_if_eq VAR_RESULT, TRUE, SSTidalRooms_EventScript_Bed_PokecenterChallenge
 	lockall
 	msgbox SSTidalRooms_Text_TakeRestOnBed, MSGBOX_DEFAULT
 	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
 	call SSTidalRooms_EventScript_ProgessCruiseAfterBed
 	releaseall
-	end
-
-SSTidalRooms_EventScript_Bed_PokecenterChallenge::
-	msgbox SSTidalRooms_Text_TakeRestOnBed_PokecenterChallenge, MSGBOX_DEFAULT
-	closemessage
 	end
 
 SSTidalRooms_EventScript_Colton::
@@ -72,10 +65,6 @@ SSTidalRooms_EventScript_Naomi::
 SSTidalRooms_Text_TakeRestOnBed:
 	.string "There's a bed…\n"
 	.string "Let's take a rest.$"
-
-SSTidalRooms_Text_TakeRestOnBed_PokecenterChallenge:
-	.string "Sorry, you are playing with\n"
-	.string "the POKéCENTER challenge!$"
 
 SSTidalRooms_Text_ColtonIntro:
 	.string "I often sail to LILYCOVE CITY.\p"

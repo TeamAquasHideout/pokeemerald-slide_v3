@@ -295,7 +295,7 @@ void FieldCB_WarpExitFadeFromBlack(void)
     ScriptContext2_Enable();
 }
 
-static void FieldCB_SpinEnterWarp(void)
+void FieldCB_SpinEnterWarp(void)
 {
     Overworld_PlaySpecialMapMusic();
     WarpFadeInScreen();

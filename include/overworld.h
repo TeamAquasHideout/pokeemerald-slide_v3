@@ -55,6 +55,7 @@ extern u8 gFieldLinkPlayerCount;
 extern const struct UCoords32 gDirectionToVectors[];
 
 void DoWhiteOut(void);
+void DoWhiteOut2(void);
 void Overworld_ResetStateAfterFly(void);
 void Overworld_ResetStateAfterTeleport(void);
 void Overworld_ResetStateAfterDigEscRope(void);
@@ -133,6 +134,7 @@ void SetMainCallback1(void (*cb)(void));
 void SetUnusedCallback(void *a0);
 void CB2_NewGame(void);
 void CB2_WhiteOut(void);
+void CB2_WhiteOut2(void);
 void CB2_LoadMap(void);
 void CB2_ReturnToFieldContestHall(void);
 void CB2_ReturnToFieldCableClub(void);

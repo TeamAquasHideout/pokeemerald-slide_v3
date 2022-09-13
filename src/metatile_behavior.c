@@ -35,7 +35,7 @@ static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
     [MB_SHOAL_CAVE_ENTRANCE]             = TILE_FLAG_UNUSED,
     [MB_ICE]                             = TILE_FLAG_UNUSED,
     [MB_SAND]                            = TILE_FLAG_UNUSED,
-    [MB_SEAWEED]                         = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE | TILE_FLAG_HAS_ENCOUNTERS,
+    [MB_SEAWEED]                         = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_UNUSED_23]                       = TILE_FLAG_UNUSED,
     [MB_ASHGRASS]                        = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_FOOTPRINTS]                      = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
@@ -211,7 +211,14 @@ bool8 MetatileBehavior_IsReflective(u8 metatileBehavior)
 
 bool8 MetatileBehavior_IsIce(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_ICE)
+    if ((metatileBehavior == MB_ICE) 
+     || (metatileBehavior == MB_NORMAL) 
+     || (metatileBehavior == MB_CAVE) 
+     || (metatileBehavior == MB_SHALLOW_WATER) 
+     || (metatileBehavior == MB_PUDDLE) 
+     || (metatileBehavior == MB_SAND) 
+     || (sTileBitAttributes[metatileBehavior] & TILE_FLAG_SURFABLE) 
+     || (metatileBehavior == MB_MOUNTAIN_TOP))
         return TRUE;
     else
         return FALSE;
@@ -352,7 +359,14 @@ bool8 MetatileBehavior_IsForcedMovementTile(u8 metatileBehavior)
 
 bool8 MetatileBehavior_IsIce_2(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_ICE)
+    if ((metatileBehavior == MB_ICE) 
+     || (metatileBehavior == MB_NORMAL) 
+     || (metatileBehavior == MB_CAVE) 
+     || (metatileBehavior == MB_SHALLOW_WATER) 
+     || (metatileBehavior == MB_PUDDLE) 
+     || (metatileBehavior == MB_SAND) 
+     || (sTileBitAttributes[metatileBehavior] & TILE_FLAG_SURFABLE) 
+     || (metatileBehavior == MB_MOUNTAIN_TOP))
         return TRUE;
     else
         return FALSE;
@@ -606,7 +620,13 @@ bool8 MetatileBehavior_IsSecretBasePoster(u8 metatileBehavior)
 
 bool8 MetatileBehavior_IsNormal(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_NORMAL)
+    if ((metatileBehavior == MB_NORMAL) 
+     || (metatileBehavior == MB_ICE) 
+     || (metatileBehavior == MB_CAVE) 
+     || (metatileBehavior == MB_PUDDLE) 
+     || (metatileBehavior == MB_SHALLOW_WATER) 
+     || (sTileBitAttributes[metatileBehavior] & TILE_FLAG_SURFABLE) 
+     || (metatileBehavior == MB_MOUNTAIN_TOP))
         return TRUE;
     else
         return FALSE;

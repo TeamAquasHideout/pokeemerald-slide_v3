@@ -382,6 +382,16 @@ void DoWhiteOut(void)
     WarpIntoMap();
 }
 
+void DoWhiteOut2(void)
+{
+    ScriptContext2_RunNewScript(EventScript_WhiteOut);
+    //SetMoney(&gSaveBlock1Ptr->money, GetMoney(&gSaveBlock1Ptr->money) / 2);
+    HealPlayerParty();
+    Overworld_ResetStateAfterWhiteOut();
+    SetWarpDestinationToLastHealLocation();
+    WarpIntoMap();
+}
+
 void Overworld_ResetStateAfterFly(void)
 {
     ResetInitialPlayerAvatarState();
@@ -1596,6 +1606,28 @@ void CB2_WhiteOut(void)
         }
         ResetSafariZoneFlag_();
         DoWhiteOut();
+        ResetInitialPlayerAvatarState();
+        ScriptContext1_Init();
+        ScriptContext2_Disable();
+        gFieldCallback = FieldCB_WarpExitFadeFromBlack;
+        state = 0;
+        DoMapLoadLoop(&state);
+        SetFieldVBlankCallback();
+        SetMainCallback1(CB1_Overworld);
+        SetMainCallback2(CB2_Overworld);
+    }
+}
+
+void CB2_WhiteOut2(void)
+{
+    u8 state;
+
+    if (++gMain.state >= 120)
+    {
+        FieldClearVBlankHBlankCallbacks();
+        StopMapMusic();
+        ResetSafariZoneFlag_();
+        DoWhiteOut2();
         ResetInitialPlayerAvatarState();
         ScriptContext1_Init();
         ScriptContext2_Disable();

@@ -854,6 +854,11 @@ Route104_EventScript_Ivan::
 Route104_EventScript_Billy::
 	trainerbattle_single TRAINER_BILLY, Route104_Text_BillyIntro, Route104_Text_BillyDefeat
 	msgbox Route104_Text_BillyPostBattle, MSGBOX_AUTOCLOSE
+	giveitem ITEM_HM03
+	setflag FLAG_RECEIVED_HM03
+	setflag FLAG_DEFEATED_PETALBURG_GYM
+	setvar VAR_PETALBURG_GYM_STATE, 7
+	setflag FLAG_BADGE05_GET
 	end
 
 Route104_EventScript_Haley::

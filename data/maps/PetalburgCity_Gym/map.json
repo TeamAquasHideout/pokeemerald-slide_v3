@@ -12,12 +12,12 @@
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_GYM",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_NORMAN",
       "x": 4,
-      "y": 2,
+      "y": 108,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -178,7 +178,7 @@
       "y": 105,
       "elevation": 3,
       "dest_map": "MAP_PETALBURG_CITY_GYM",
-      "dest_warp_id": 3
+      "dest_warp_id": 35
     },
     {
       "x": 7,
@@ -199,7 +199,7 @@
       "y": 105,
       "elevation": 3,
       "dest_map": "MAP_PETALBURG_CITY_GYM",
-      "dest_warp_id": 6
+      "dest_warp_id": 37
     },
     {
       "x": 1,
@@ -402,31 +402,33 @@
       "y": 7,
       "elevation": 3,
       "dest_map": "MAP_PETALBURG_CITY_GYM",
-      "dest_warp_id": 32
+      "dest_warp_id": 2
     },
     {
       "x": 2,
       "y": 7,
       "elevation": 3,
       "dest_map": "MAP_PETALBURG_CITY_GYM",
-      "dest_warp_id": 32
+      "dest_warp_id": 2
     },
     {
       "x": 7,
       "y": 7,
       "elevation": 3,
       "dest_map": "MAP_PETALBURG_CITY_GYM",
-      "dest_warp_id": 33
+      "dest_warp_id": 5
     },
     {
       "x": 6,
       "y": 7,
       "elevation": 3,
       "dest_map": "MAP_PETALBURG_CITY_GYM",
-      "dest_warp_id": 33
+      "dest_warp_id": 5
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+
+  ],
   "bg_events": [
     {
       "type": "sign",

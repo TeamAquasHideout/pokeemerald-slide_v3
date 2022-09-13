@@ -43,8 +43,9 @@ VictoryRoad_1F_EventScript_WallyEntranceBattle::
 	msgbox VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_WALLY_VR_1, VictoryRoad_1F_Text_WallyEntranceDefeat
 	msgbox VictoryRoad_1F_Text_WallyPostEntranceBattle, MSGBOX_DEFAULT
-	clearflag FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY
-	copyobjectxytoperm LOCALID_WALLY_ENTRANCE
+	setflag FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY
+	applymovement LOCALID_WALLY_ENTRANCE, VictoryRoad_1F_Movement_WallyLeave
+	removeobject LOCALID_WALLY_ENTRANCE
 	setflag FLAG_DEFEATED_WALLY_VICTORY_ROAD
 	copyvar VAR_VICTORY_ROAD_1F_STATE, VAR_0x8008
 	releaseall
@@ -64,6 +65,22 @@ VictoryRoad_1F_Movement_WallyApproachPlayer1:
 	walk_up
 	step_end
 
+VictoryRoad_1F_Movement_WallyLeave:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
 VictoryRoad_1F_Movement_WallyApproachPlayer2:
 	walk_left
 	walk_left
@@ -80,6 +97,9 @@ VictoryRoad_1F_Movement_WallyApproachPlayer2:
 @ This Wally appears near the entrance once his battle is triggered and remains there until the Hall of Fame is entered
 VictoryRoad_1F_EventScript_EntranceWally::
 	msgbox VictoryRoad_1F_Text_WallyPostEntranceBattle, MSGBOX_NPC
+	setflag FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY
+	applymovement 4, VictoryRoad_1F_Movement_WallyLeave
+	removeobject 4
 	end
 
 @ This Wally appears and remains at the exit after the Hall of Fame is entered
